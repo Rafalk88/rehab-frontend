@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Rehabilitacja Frontend (Next.js)
 
-## Getting Started
+This is the frontend of the **Rehabilitacja Module** application — handling user authentication, session scheduling, and integration with the backend API.
 
-First, run the development server:
+---
+
+## 📦 Tech Stack
+
+- [Next.js 14 (App Router)](https://nextjs.org/)
+- TypeScript
+- TailwindCSS
+- ESLint + Prettier
+- React Hook Form + Zod
+- Zustand (planned)
+- JWT-based authentication (planned)
+
+---
+
+## 🚀 Local Development
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/Rafalk88/rehabilitacja-frontend.git
+cd rehabilitacja-frontend
+```
+
+2. Install dependencies
+
+```bash
+git clone https://github.com/Rafalk88/rehabilitacja-frontend.git
+ cd rehabilitacja-frontend
+```
+
+3. Run the development server
+
+```bash
+npm install
+```
+
+3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 Linting & Formatting
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run ESLint:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+```
 
-## Learn More
+## 🗂️ Project Structure (Alpha)
 
-To learn more about Next.js, take a look at the following resources:
+```php
+rehabilitacja-frontend/
+├── public/               # Static assets
+├── src/
+│   ├── app/              # Next.js App Router pages and layout
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/       # Reusable UI components
+│   ├── lib/              # Utility functions (e.g., auth, API)
+│   ├── styles/           # Global styles
+│   └── ...
+├── .eslintrc.json
+├── .prettierrc
+└── ...
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Authentication (Planned)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Login and register UI
+JWT auth with secure cookie or localStorage
+Route protection (middleware / HOC)
+Integration with backend
 
-## Deploy on Vercel
+## 🔐 Authentication (Planned)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Login and register UI
+JWT auth with secure cookie or localStorage
+Route protection (middleware / HOC)
+Integration with backend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛣️ Roadmap (Alpha)
+
+Initial project setup
+ESLint + Prettier config
+Auth UI (login/register)
+JWT session support
+Dashboard layout
+Calendar placeholder
+Backend integration
+
+## 🧾 Versioning
+
+We follow SemVer.
+This is an early alpha, versions will be tagged as 0.x.x-alpha.
+
+See CHANGELOG.md for details.
+
+## 📄 License
+
+This project is for educational purposes only.
+MIT-style open development (non-commercial).

@@ -1,28 +1,9 @@
 {
   "name": "rehab-frontend",
-  "version": "0.2.0-alpha",
+  "version": "0.1.0-alpha",
   "private": true,
-  "description": "Frontend for Rehabilitacja Module - a rehabilitation platform",
-  "author": {
-    "name": "Rafał Kochanecki",
-    "email": "rafal.kochanecki@gmail.com",
-    "url": "https://github.com/Rafalk88"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Rafalk88/rehab-frontend.git"
-  },
-  "homepage": "https://github.com/Rafalk88/rehab-module-frontend#readme",
-  "keywords": [
-    "rehabilitation",
-    "nextjs",
-    "frontend",
-    "typescript",
-    "healthcare"
-  ],
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -30,21 +11,30 @@
   "dependencies": {
     "antd": "^5.26.4",
     "env-var": "^7.5.0",
-    "eslint-plugin-prettier": "^5.5.1",
+    "less": "^4.3.0",
+    "less-loader": "^12.3.0",
     "next": "15.3.5",
-    "prettier": "^3.6.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "^15.3.5",
-    "tailwindcss": "^4",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "15.3.5",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
     "typescript": "^5"
   }
 }

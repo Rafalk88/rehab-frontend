@@ -6,9 +6,9 @@ This is the frontend of the **Rehabilitacja Module** application — handling us
 
 ## 📦 Tech Stack
 
-- [Next.js 14 (App Router)](https://nextjs.org/)
+- [Next.js 14 (Pages Router + CSR)](https://nextjs.org/)
 - TypeScript
-- TailwindCSS
+- LESS
 - ESLint + Prettier
 - React Hook Form + Zod
 - Zustand (planned)
@@ -35,13 +35,13 @@ git clone https://github.com/Rafalk88/rehabilitacja-frontend.git
 3. Run the development server
 
 ```bash
-npm install
+pnpm install
 ```
 
 3. Run the development server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## 🧪 Linting & Formatting
@@ -49,33 +49,24 @@ npm run dev
 Run ESLint:
 
 ```bash
-npm run lint
+pnpm run lint
 ```
 
 ## 🗂️ Project Structure (Alpha)
 
 ```php
-rehabilitacja-frontend/
+rehab-frontend/
 ├── public/               # Static assets
 ├── src/
-│   ├── app/              # Next.js App Router pages and layout
-│   │   ├── layout.tsx
-│   │   └── page.tsx
+│   ├── pages/            # Pages Router files
 │   ├── components/       # Reusable UI components
-│   ├── lib/              # Utility functions (e.g., auth, API)
-│   ├── styles/           # Global styles
+│   ├── lib/              # Utility functions (auth, API)
+│   ├── styles/           # Global Less styles
 │   └── ...
-├── .eslintrc.json
+├── .eslint.config.json
 ├── .prettierrc
 └── ...
 ```
-
-## 🔐 Authentication (Planned)
-
-Login and register UI
-JWT auth with secure cookie or localStorage
-Route protection (middleware / HOC)
-Integration with backend
 
 ## 🔐 Authentication (Planned)
 

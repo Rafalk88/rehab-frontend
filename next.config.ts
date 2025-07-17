@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
           options: {
             lessOptions: {
               javascriptEnabled: true,
+              modifyVars: {},
             },
           },
         },

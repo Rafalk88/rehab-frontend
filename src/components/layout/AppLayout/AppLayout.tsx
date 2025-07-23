@@ -1,11 +1,15 @@
+import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
-import { Layout, Menu, theme } from "antd";
+import { useRouter } from "next/router";
+import { Layout, Menu } from "antd";
+import "./AppLayout.less";
 
 import {
   DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
+  EuroCircleOutlined,
+  ReconciliationOutlined,
+  FundOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
@@ -29,50 +33,45 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
+  getItem("Rejestracja", "/registration", <ReconciliationOutlined />),
+  getItem("Gabinet", "/gabinet", <DesktopOutlined />),
+  getItem("Pacjenci", "/patients", <UserOutlined />),
+  getItem("Statystyka", "/statistic", <FundOutlined />),
+  getItem("Rozliczenia", "/settlements", <EuroCircleOutlined />),
 ];
 
 function AppLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const router = useRouter();
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <aside>
+    <Layout className="root">
+      <section>
+        <Link href="/" aria-label="Logo - homepage button">
+          <Image src="/" alt="Logo" width={120} height={40} />
+        </Link>
         <Sider
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
+          className="sider"
+          aria-label="Sidebar"
         >
-          <div className="demo-logo-vertical" />
           <Menu
-            theme="dark"
-            defaultSelectedKeys={["1"]}
+            theme="light"
+            selectedKeys={[router.pathname]}
             mode="inline"
             items={items}
+            onClick={(key) => router.push(String(key))}
           />
         </Sider>
-      </aside>
-
+      </section>
       <Layout>
         <header>
-          <Header style={{ padding: 0, background: colorBgContainer }} />
+          <Header className="header" />
         </header>
 
         <main>
-          <Content style={{ margin: "0 16px" }}>{children}</Content>
+          <Content className="mainContent">{children}</Content>
         </main>
       </Layout>
     </Layout>

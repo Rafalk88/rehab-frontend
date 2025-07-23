@@ -1,0 +1,30 @@
+@import "../../../styles/variables.less";
+@minHeight: 100vh;
+
+.root {
+  min-height: @minHeight;
+  display: flex;
+  flex-direction: column;
+  background-color: @white;
+
+  img {
+  }
+
+  section {
+    border-right: 4px;
+    border-right-color: @border-color;
+  }
+}
+
+.header,
+.sider {
+  background-color: @white;
+}
+
+.sider {
+  min-height: @minHeight;
+}
+
+.mainContent {
+  background-color: @body-bg;
+}

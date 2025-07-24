@@ -47,7 +47,11 @@ function AppLayout({ children }: { children: React.ReactNode }) {
     <Layout className="root">
       <section>
         <Link href="/" aria-label="Logo - homepage button">
-          <Image src="/" alt="Logo" width={120} height={40} />
+          {!collapsed ? (
+            <Image src="/logo.png" alt="Logo" width={160} height={60} />
+          ) : (
+            <Image src="/logo-icon.png" alt="Logo" width={60} height={60} />
+          )}
         </Link>
         <Sider
           collapsible
@@ -57,6 +61,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
           aria-label="Sidebar"
         >
           <Menu
+            inlineIndent={8}
             theme="light"
             selectedKeys={[router.pathname]}
             mode="inline"

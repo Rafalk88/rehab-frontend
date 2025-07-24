@@ -2,6 +2,25 @@
   "name": "rehab-frontend",
   "version": "0.1.0-alpha",
   "private": true,
+  "description": "Twój pierwszy krok do sprawnej opieki",
+  "author": {
+    "name": "Rafał Kochanecki",
+    "email": "rafal.kochanecki@gmail.com",
+    "url": "https://github.com/Rafalk88"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rafalk88/rehab-frontend.git"
+  },
+  "homepage": "https://github.com/Rafalk88/rehab-module-frontend#readme",
+  "keywords": [
+    "rehabilitation",
+    "nextjs",
+    "frontend",
+    "typescript",
+    "healthcare"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

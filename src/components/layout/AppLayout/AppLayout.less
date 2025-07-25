@@ -4,33 +4,11 @@
 .root {
   min-height: @minHeight;
   background-color: @sidebar-bg;
-
-  section {
-    position: relative;
-    border-right: 1px solid @border-color;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding-top: 14px;
-  }
 }
 
-.header,
-.sider {
-  background-color: @sidebar-bg;
-}
-
-.sider {
-  min-height: @minHeight;
-}
-
-.mainContent {
-  background-color: @body-bg;
-}
-
+//styles whole element
 .collapse-btn {
-  background: @white;
+  background-color: @white;
   border: none;
   position: absolute;
   right: 0;
@@ -45,8 +23,39 @@
   align-items: center;
   justify-content: center;
   transition: background 0.3s;
+
+  &:hover {
+    background: darken(@white, 5%);
+  }
 }
 
+.ant-layout-sider {
+  background-color: @sidebar-bg;
+  min-height: @minHeight;
+  border-right: 1px solid @border-color;
+
+  .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 6px 0 6px;
+  }
+}
+
+// Resetuje domyślne tło menu z AntD
 .ant-menu-light {
   background-color: transparent;
+}
+
+// Resetuje domyślny border z AntD, aby usunąć niechcianą podwójną linię przy Siderze
+.ant-menu-light.ant-menu-root.ant-menu-inline {
+  border-inline-end: none;
+}
+
+.header {
+  background-color: @sidebar-bg;
+}
+
+.main-content {
+  background-color: @body-bg;
 }

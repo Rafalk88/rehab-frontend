@@ -3,9 +3,10 @@
 
 .root {
   min-height: @minHeight;
-  background-color: @white;
+  background-color: @sidebar-bg;
 
   section {
+    position: relative;
     border-right: 1px solid @border-color;
     display: flex;
     flex-direction: column;
@@ -17,7 +18,7 @@
 
 .header,
 .sider {
-  background-color: @white;
+  background-color: @sidebar-bg;
 }
 
 .sider {
@@ -26,4 +27,26 @@
 
 .mainContent {
   background-color: @body-bg;
+}
+
+.collapse-btn {
+  background: @white;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 22px;
+  transform: translateX(50%);
+  cursor: pointer;
+  font-size: 16px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.ant-menu-light {
+  background-color: transparent;
 }

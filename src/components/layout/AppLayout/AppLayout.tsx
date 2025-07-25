@@ -11,6 +11,8 @@ import {
   ReconciliationOutlined,
   FundOutlined,
   UserOutlined,
+  CaretLeftOutlined,
+  CaretRightOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 
@@ -46,6 +48,14 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <Layout className="root">
       <section>
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="collapse-btn"
+          aria-label="left"
+          role="image"
+        >
+          {collapsed ? <CaretRightOutlined /> : <CaretLeftOutlined />}
+        </button>
         <Link href="/" aria-label="Logo - homepage button">
           {!collapsed ? (
             <Image src="/logo.png" alt="Logo" width={160} height={60} />
@@ -54,7 +64,6 @@ function AppLayout({ children }: { children: React.ReactNode }) {
           )}
         </Link>
         <Sider
-          collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
           className="sider"

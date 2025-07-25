@@ -47,7 +47,11 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   return (
     <Layout className="root">
-      <section>
+      <Sider
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+        aria-label="Sidebar"
+      >
         <button
           onClick={() => setCollapsed(!collapsed)}
           className="collapse-btn"
@@ -56,36 +60,29 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         >
           {collapsed ? <CaretRightOutlined /> : <CaretLeftOutlined />}
         </button>
-        <Link href="/" aria-label="Logo - homepage button">
+        <Link href="/" aria-label="Logo - homepage button" className="logo">
           {!collapsed ? (
             <Image src="/logo.png" alt="Logo" width={160} height={60} />
           ) : (
             <Image src="/logo-icon.png" alt="Logo" width={60} height={60} />
           )}
         </Link>
-        <Sider
-          collapsed={collapsed}
-          onCollapse={(value) => setCollapsed(value)}
-          className="sider"
-          aria-label="Sidebar"
-        >
-          <Menu
-            inlineIndent={8}
-            theme="light"
-            selectedKeys={[router.pathname]}
-            mode="inline"
-            items={items}
-            onClick={(key) => router.push(String(key))}
-          />
-        </Sider>
-      </section>
+        <Menu
+          inlineIndent={8}
+          theme="light"
+          selectedKeys={[router.pathname]}
+          mode="inline"
+          items={items}
+          onClick={(key) => router.push(String(key))}
+        />
+      </Sider>
       <Layout>
         <header>
           <Header className="header" />
         </header>
 
         <main>
-          <Content className="mainContent">{children}</Content>
+          <Content className="main-content">{children}</Content>
         </main>
       </Layout>
     </Layout>

@@ -1,4 +1,4 @@
-import "./AppLayout.less";
+import "./CollapseButton.less";
 
 function CollapseButton({
   collapsed,

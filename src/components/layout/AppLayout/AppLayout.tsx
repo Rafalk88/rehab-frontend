@@ -15,6 +15,7 @@ import {
   CaretRightOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
+import { CollapseButton } from "./CollapseButton";
 
 const { Header, Content, Sider } = Layout;
 
@@ -52,14 +53,9 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         onCollapse={(value) => setCollapsed(value)}
         aria-label="Sidebar"
       >
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="collapse-btn"
-          aria-label="left"
-          role="image"
-        >
+        <CollapseButton collapsed={collapsed} setCollapsed={setCollapsed}>
           {collapsed ? <CaretRightOutlined /> : <CaretLeftOutlined />}
-        </button>
+        </CollapseButton>
         <Link href="/" aria-label="Logo - homepage button" className="logo">
           {!collapsed ? (
             <Image src="/logo.png" alt="Logo" width={160} height={60} />

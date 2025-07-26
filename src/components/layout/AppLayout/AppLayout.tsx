@@ -15,6 +15,7 @@ import {
   CaretRightOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const { Header, Content, Sider } = Layout;
 
@@ -55,14 +56,17 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         <CollapseButton collapsed={collapsed} setCollapsed={setCollapsed}>
           {collapsed ? <CaretRightOutlined /> : <CaretLeftOutlined />}
         </CollapseButton>
-        <Logo collapsed={collapsed} />
-        <Menu
-          theme="light"
-          selectedKeys={[router.pathname]}
-          mode="inline"
-          items={items}
-          onClick={(key) => router.push(String(key))}
-        />
+        <div className="menu-content-wrapper">
+          <Logo collapsed={collapsed} />
+          <Menu
+            theme="light"
+            selectedKeys={[router.pathname]}
+            mode="inline"
+            items={items}
+            onClick={(key) => router.push(String(key))}
+          />
+        </div>
+        <ThemeSwitcher />
       </Sider>
       <Layout>
         <Header className="header" />

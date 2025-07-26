@@ -1,6 +1,13 @@
 import "@/styles/globals.less";
+import { ConfigProvider } from "antd";
 import type { AppProps } from "next/app";
 
+import theme from "@/theme/themeConfig";
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <ConfigProvider theme={theme}>
+      <Component {...pageProps} />
+    </ConfigProvider>
+  );
 }

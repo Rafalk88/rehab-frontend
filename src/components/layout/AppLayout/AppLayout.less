@@ -6,7 +6,12 @@
   background-color: @sidebar-bg;
 }
 
-//styles whole element
+.logo {
+  text-align: center;
+  padding-top: 14px;
+}
+
+//custom collapse btn
 .collapse-btn {
   background-color: @white;
   border: none;
@@ -38,13 +43,17 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 14px 6px 0 6px;
   }
 }
 
 // Resetuje domyślne tło menu z AntD
 .ant-menu-light {
   background-color: transparent;
+}
+
+.ant-menu-inline .ant-menu-item-selected,
+.ant-menu-vertical .ant-menu-item-selected {
+  border-right: 4px solid @primary-hover;
 }
 
 // Resetuje domyślny border z AntD, aby usunąć niechcianą podwójną linię przy Siderze

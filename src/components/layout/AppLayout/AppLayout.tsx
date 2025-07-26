@@ -68,7 +68,6 @@ function AppLayout({ children }: { children: React.ReactNode }) {
           )}
         </Link>
         <Menu
-          inlineIndent={8}
           theme="light"
           selectedKeys={[router.pathname]}
           mode="inline"

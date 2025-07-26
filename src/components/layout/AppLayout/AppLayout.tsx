@@ -1,8 +1,8 @@
-import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { Layout, Menu } from "antd";
+import { CollapseButton } from "./CollapseButton";
+import { Logo } from "./Logo";
 import "./AppLayout.less";
 
 import {
@@ -15,7 +15,6 @@ import {
   CaretRightOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { CollapseButton } from "./CollapseButton";
 
 const { Header, Content, Sider } = Layout;
 
@@ -56,13 +55,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         <CollapseButton collapsed={collapsed} setCollapsed={setCollapsed}>
           {collapsed ? <CaretRightOutlined /> : <CaretLeftOutlined />}
         </CollapseButton>
-        <Link href="/" aria-label="Logo - homepage button" className="logo">
-          {!collapsed ? (
-            <Image src="/logo.png" alt="Logo" width={160} height={60} />
-          ) : (
-            <Image src="/logo-icon.png" alt="Logo" width={60} height={60} />
-          )}
-        </Link>
+        <Logo collapsed={collapsed} />
         <Menu
           theme="light"
           selectedKeys={[router.pathname]}

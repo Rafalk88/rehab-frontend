@@ -36,11 +36,18 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Rejestracja", "/registration", <ReconciliationOutlined />),
-  getItem("Gabinet", "/gabinet", <DesktopOutlined />),
-  getItem("Pacjenci", "/patients", <UserOutlined />),
-  getItem("Statystyka", "/statistic", <FundOutlined />),
-  getItem("Rozliczenia", "/settlements", <EuroCircleOutlined />),
+  {
+    key: "modules",
+    label: "Moduły",
+    type: "group",
+    children: [
+      getItem("Rejestracja", "/registration", <ReconciliationOutlined />),
+      getItem("Gabinet", "/gabinet", <DesktopOutlined />),
+      getItem("Pacjenci", "/patients", <UserOutlined />),
+      getItem("Statystyka", "/statistic", <FundOutlined />),
+      getItem("Rozliczenia", "/settlements", <EuroCircleOutlined />),
+    ],
+  },
 ];
 
 function AppLayout({ children }: { children: React.ReactNode }) {

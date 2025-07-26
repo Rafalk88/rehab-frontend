@@ -66,7 +66,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
             onClick={(key) => router.push(String(key))}
           />
         </div>
-        <ThemeSwitcher />
+        <ThemeSwitcher collapsed={collapsed} />
       </Sider>
       <Layout>
         <Header className="header" />

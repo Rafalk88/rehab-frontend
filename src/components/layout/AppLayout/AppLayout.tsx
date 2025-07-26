@@ -76,13 +76,8 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         />
       </Sider>
       <Layout>
-        <header>
-          <Header className="header" />
-        </header>
-
-        <main>
-          <Content className="main-content">{children}</Content>
-        </main>
+        <Header className="header" />
+        <Content className="main-content">{children}</Content>
       </Layout>
     </Layout>
   );

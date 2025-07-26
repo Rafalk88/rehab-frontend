@@ -8,11 +8,14 @@ import "./AppLayout.less";
 import {
   DesktopOutlined,
   EuroCircleOutlined,
-  ReconciliationOutlined,
+  ReadOutlined,
   FundOutlined,
-  UserOutlined,
+  TeamOutlined,
   CaretLeftOutlined,
   CaretRightOutlined,
+  QuestionCircleOutlined,
+  SettingOutlined,
+  BellOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { ThemeSwitcher } from "./ThemeSwitcher";
@@ -41,11 +44,21 @@ const items: MenuItem[] = [
     label: "Moduły",
     type: "group",
     children: [
-      getItem("Rejestracja", "/registration", <ReconciliationOutlined />),
+      getItem("Rejestracja", "/registration", <ReadOutlined />),
       getItem("Gabinet", "/gabinet", <DesktopOutlined />),
-      getItem("Pacjenci", "/patients", <UserOutlined />),
+      getItem("Pacjenci", "/patients", <TeamOutlined />),
       getItem("Statystyka", "/statistic", <FundOutlined />),
       getItem("Rozliczenia", "/settlements", <EuroCircleOutlined />),
+    ],
+  },
+  {
+    key: "h&s",
+    label: "Pomoc & ustawienia",
+    type: "group",
+    children: [
+      getItem("Pomoc & Centrum", "/help-center", <QuestionCircleOutlined />),
+      getItem("Ustawienia", "/settings", <SettingOutlined />),
+      getItem("Zgłoś błąd", "/report", <BellOutlined />),
     ],
   },
 ];

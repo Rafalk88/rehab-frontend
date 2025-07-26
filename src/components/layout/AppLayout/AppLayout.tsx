@@ -1,9 +1,10 @@
+import { TopNav } from "@/components/layout/TopNav";
+import { CollapseButton } from "./CollapseButton";
+import { Logo } from "./Logo";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { Layout, Menu } from "antd";
-import { CollapseButton } from "./CollapseButton";
-import { Logo } from "./Logo";
-import "./AppLayout.less";
 
 import {
   DesktopOutlined,
@@ -16,10 +17,12 @@ import {
   SettingOutlined,
   BellOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { ThemeSwitcher } from "./ThemeSwitcher";
 
-const { Header, Content, Sider } = Layout;
+import type { MenuProps } from "antd";
+
+import "./AppLayout.less";
+
+const { Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -88,7 +91,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         <ThemeSwitcher collapsed={collapsed} />
       </Sider>
       <Layout>
-        <Header className="header" />
+        <TopNav />
         <Content className="main-content">{children}</Content>
       </Layout>
     </Layout>

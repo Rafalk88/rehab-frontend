@@ -1,0 +1,21 @@
+@import "../../../styles/variables.less";
+
+.ant-layout-header {
+  background-color: @sidebar-bg;
+  padding: 0;
+  padding-left: 32px;
+  padding-right: 16px;
+  border-bottom: 1px solid @border-color;
+}
+
+.ant-col {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.ant-col:not(:nth-child(1)):not(:nth-child(2)) {
+  justify-content: right;
+  padding-left: 0;
+  padding-right: 10px;
+}

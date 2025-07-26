@@ -11,8 +11,7 @@ import {
   ReadOutlined,
   FundOutlined,
   TeamOutlined,
-  CaretLeftOutlined,
-  CaretRightOutlined,
+  LayoutOutlined,
   QuestionCircleOutlined,
   SettingOutlined,
   BellOutlined,
@@ -74,7 +73,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         aria-label="Sidebar"
       >
         <CollapseButton collapsed={collapsed} setCollapsed={setCollapsed}>
-          {collapsed ? <CaretRightOutlined /> : <CaretLeftOutlined />}
+          <LayoutOutlined />
         </CollapseButton>
         <div className="menu-content-wrapper">
           <Logo collapsed={collapsed} />

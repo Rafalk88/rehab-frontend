@@ -13,7 +13,12 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  ...compat.extends(
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ),
   {
     plugins: {
       prettier: eslintPluginPrettier,
@@ -21,8 +26,18 @@ const eslintConfig = [
     },
     rules: {
       "prettier/prettier": "warn",
-      "jsx-a11y/anchor-is-valid": "warn",
-      "jsx-a11y/no-noninteractive-element-interactions": "warn",
+      "jsx-a11y/alt-text": "warn",
+      "jsx-a11y/aria-role": "warn",
+      "jsx-a11y/click-events-have-key-events": "warn",
+      "jsx-a11y/label-has-associated-control": [
+        "warn",
+        {
+          labelComponents: [],
+          labelAttributes: ["label"],
+          controlComponents: [],
+          depth: 3,
+        },
+      ],
     },
   },
   {

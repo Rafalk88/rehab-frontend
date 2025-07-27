@@ -1,3 +1,4 @@
+import { UnitSelector } from "@/components/UnitSelector";
 import { SearchBar } from "@/components/SearchBar";
 import { Divider } from "@/components/ui/Divider";
 import { Col, Row } from "antd";
@@ -12,7 +13,7 @@ function TopNav() {
     <Header>
       <Row justify="center" align="middle">
         <Col className="col" flex="20%">
-          20%
+          <UnitSelector />
         </Col>
         <Col className="col" flex="35%">
           <SearchBar />

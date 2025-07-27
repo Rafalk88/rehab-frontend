@@ -23,7 +23,7 @@ const handleChange = (value: string) => {
 function UnitSelector() {
   return (
     <Select
-      className="unit-selector"
+      className="own-select"
       options={options}
       placeholder="Wybierz jednostkę"
       variant="borderless"

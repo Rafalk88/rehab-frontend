@@ -1,6 +1,6 @@
 import { UnitSelector } from "@/components/UnitSelector";
 import { SearchBar } from "@/components/SearchBar";
-import { Divider } from "@/components/ui/Divider";
+import { Divider } from "@/components/ui";
 import { Col, Row } from "antd";
 import { Layout } from "antd";
 
@@ -10,19 +10,19 @@ const { Header } = Layout;
 
 function TopNav() {
   return (
-    <Header>
+    <Header className="own-layout-header">
       <Row justify="center" align="middle">
-        <Col className="col" flex="20%">
+        <Col className="own-col" flex="20%">
           <UnitSelector />
         </Col>
-        <Col className="col" flex="35%">
+        <Col className="own-col" flex="35%">
           <SearchBar />
         </Col>
-        <Col className="col" flex="15%">
+        <Col className="own-col" flex="15%">
           15%
         </Col>
         <Divider />
-        <Col className="col" flex="auto">
+        <Col className="own-col" flex="auto">
           auto
         </Col>
       </Row>

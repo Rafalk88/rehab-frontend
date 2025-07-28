@@ -1,0 +1,48 @@
+@import "../../../styles/variables.less";
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 fade(@error, 70%);
+  }
+  70% {
+    box-shadow: 0 0 0 6px fade(@error, 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 fade(@error, 0%);
+  }
+}
+
+.own-badge {
+  .own-badge-item[data-pulse="true"] {
+    animation: pulse 2s infinite;
+    border-radius: 50%;
+    color: @error;
+  }
+  .own-badge-item[data-disabled="false"] {
+    cursor: pointer;
+  }
+
+  .own-badge-item[data-pulse="false"][data-disabled="false"]:hover {
+    color: @gray-600;
+  }
+
+  .own-badge-item[data-pulse="false"][data-disabled="true"] {
+    opacity: 50%;
+    pointer-events: none;
+    filter: grayscale(100%);
+  }
+
+  .ant-btn {
+    padding: 0;
+  }
+
+  // klasa resetuje kolor hover na guziku
+  .ant-btn-color-default.ant-btn-variant-link:not(:disabled):not(
+      .ant-btn-disabled
+    ):hover {
+    color: @gray-600;
+  }
+
+  .anticon {
+    font-size: 20px;
+  }
+}

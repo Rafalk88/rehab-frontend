@@ -1,0 +1,1 @@
+export { SystemIcon } from "./SystemIcon";

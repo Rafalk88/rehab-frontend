@@ -1,0 +1,44 @@
+@import "../../../styles/variables.less";
+@minHeight: 100vh;
+
+.root {
+  min-height: @minHeight;
+  background-color: @sidebar-bg;
+}
+
+.ant-layout-sider {
+  background-color: @sidebar-bg;
+  min-height: @minHeight;
+  border-right: 1px solid @border-color;
+
+  .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .menu-content-wrapper {
+    padding-top: 14px;
+  }
+}
+
+// Resetuje domyślne tło menu z AntD
+.ant-menu-light {
+  background-color: transparent;
+}
+
+.ant-menu-inline .ant-menu-item-selected,
+.ant-menu-vertical .ant-menu-item-selected {
+  border-right: 4px solid @primary-hover;
+}
+
+// Resetuje domyślny border z AntD, aby usunąć niechcianą podwójną linię przy Siderze
+.ant-menu-light.ant-menu-root.ant-menu-inline,
+.ant-menu-light.ant-menu-root.ant-menu-vertical {
+  border-inline-end: none;
+}
+
+.main-content {
+  background-color: @body-bg;
+}

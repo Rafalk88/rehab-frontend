@@ -1,3 +1,4 @@
+import { UserMenu } from "@/components/UserMenu";
 import { UnitSelector } from "@/components/UnitSelector";
 import { SearchBar } from "@/components/SearchBar";
 import { Divider, SystemIcon } from "@/components/ui";
@@ -61,7 +62,7 @@ function TopNav() {
         </Col>
         <Divider />
         <Col className="own-col" flex="auto">
-          auto
+          <UserMenu />
         </Col>
       </Row>
     </Header>

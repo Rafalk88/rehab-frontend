@@ -1,0 +1,43 @@
+@import "../../styles/variables.less";
+
+.own-menu-user {
+  display: flex;
+  flex-grow: 1;
+  height: @layout-header-height;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0;
+
+  .ant-menu-submenu-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ant-menu-title-content {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      line-height: 16px;
+    }
+
+    & > *:nth-child(1) {
+      font-weight: bold;
+      color: @text-color;
+    }
+
+    & > *:nth-child(2) {
+      color: @text-muted;
+    }
+  }
+
+  &.ant-menu-light.ant-menu-horizontal > .ant-menu-submenu:hover::after,
+  &.ant-menu-light.ant-menu-horizontal > .ant-menu-submenu::after {
+    border-bottom: 0;
+  }
+
+  .ant-avatar {
+    color: @text-color !important;
+  }
+}

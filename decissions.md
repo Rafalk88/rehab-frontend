@@ -106,6 +106,41 @@ Separation of environments is essential, even for internal tools.
 
 ---
 
+## 9. 🎨 Styling Ant Design Components with own-\* Classes
+
+**Why:**
+Ant Design generates deeply nested CSS classes (e.g., `.ant-select`, `.ant-select-selector`) and applies token-based or inline styles. Overriding these styles globally (`.ant-*`) leads to brittle and hard-to-maintain code, especially in a growing team environment.
+
+To maintain encapsulation and traceability, we apply styles by adding our own scoped class names (e.g., `.own-select`) to the top-level component and nesting custom styles within .less files.
+
+**Decision:**
+
+- Every styled AntD component should receive a unique class like `.own-*`, e.g., `.own-select`, `.own-table`.
+- Styles should be scoped via nesting inside the component’s .less file:
+
+```less
+/* UnitSelector.less */
+.own-select {
+  width: 140px;
+
+  .ant-select-selector {
+    border-radius: 0;
+    padding-inline: 8px;
+  }
+}
+```
+
+- Never style AntD globally (e.g., .ant-select { ... }) — always scope.
+- This improves specificity, avoids conflicts during upgrades, and makes it easier to track customized areas.
+
+**Benefits:**
+
+- Clean separation between custom and library styles
+- Predictable override behavior
+- Easier onboarding and documentation
+
+🗂 If this approach grows in complexity, we’ll extract it into a separate styling.md.
+
 ## Next Planned Decisions
 
 - Zustand setup and structure

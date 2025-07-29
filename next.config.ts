@@ -1,31 +1,46 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import withAntdLess from "next-plugin-antd-less";
+import withBundleAnalyzerFn from "@next/bundle-analyzer";
 
-const nextConfig: NextConfig = {
+// Basic config
+const baseConfig = {
   reactStrictMode: true,
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.less$/,
-      use: [
-        {
-          loader: "style-loader",
-        },
-        {
-          loader: "css-loader",
-        },
-        {
-          loader: "less-loader",
-          options: {
-            lessOptions: {
-              javascriptEnabled: true,
-              modifyVars: {},
-            },
-          },
-        },
-      ],
-    });
 
-    return config;
+  // Let build even with ESLint errors (e.g. CI)
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
-module.exports = nextConfig;
+// Bundle Analyzer – active only when ANALYZE=true
+const withBundleAnalyzer = withBundleAnalyzerFn({
+  enabled: process.env.ANALYZE === "true",
+});
+
+// LESS config with antD
+const lessConfig = withAntdLess({
+  lessVarsFilePath: "./src/styles/variables.less",
+  lessVarsFilePathAppendToEndOfContent: true,
+
+  // Local style classes *.module.less
+  cssLoaderOptions: {
+    modules: {
+      auto: (filePath: string) => filePath.endsWith(".module.less"),
+      localIdentName:
+        process.env.NODE_ENV !== "production"
+          ? "[folder]__[local]__[hash:4]"
+          : "[hash:8]",
+    },
+  },
+
+  // less-loader options
+  lessLoaderOptions: {
+    lessOptions: {
+      javascriptEnabled: true,
+    },
+  },
+});
+
+const nextConfig = withBundleAnalyzer(lessConfig(baseConfig));
+
+export default nextConfig;

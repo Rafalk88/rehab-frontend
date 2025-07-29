@@ -5,13 +5,13 @@ import "./UserMenu.less";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-function UserMenu({ logoutTime }: { logoutTime: string }) {
+function UserMenu({ logoutTime }: { logoutTime: number }) {
   const items: MenuItem[] = [
     {
       label: (
         <>
           <span>Rafał</span>
-          <span>Wylogowanie za {logoutTime}</span>
+          <span>Wylogowanie za {logoutTime}m</span>
         </>
       ),
       key: "user-menu",

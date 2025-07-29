@@ -63,7 +63,7 @@ function TopNav() {
         </Col>
         <Divider />
         <Col className="own-col" flex="auto">
-          <UserMenu logoutTime={"54m"} />
+          <UserMenu logoutTime={54} />
         </Col>
       </Row>
     </Header>

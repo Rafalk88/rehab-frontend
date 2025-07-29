@@ -1,4 +1,4 @@
-import "./CollapseButton.less";
+import style from "./CollapseButton.module.less";
 
 function CollapseButton({
   collapsed,
@@ -12,9 +12,8 @@ function CollapseButton({
   return (
     <button
       onClick={() => setCollapsed(!collapsed)}
-      className="collapse-btn"
-      aria-label="left"
-      role="image"
+      className={style["own-collapse-btn"]}
+      aria-label={!collapsed ? "left" : "right"}
     >
       {children}
     </button>

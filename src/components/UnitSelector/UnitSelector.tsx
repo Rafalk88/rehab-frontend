@@ -1,5 +1,5 @@
 import { Select } from "antd";
-import "./UnitSelector.less";
+import styles from "./UnitSelector.module.less";
 
 const options = [
   {
@@ -23,7 +23,7 @@ const handleChange = (value: string) => {
 function UnitSelector() {
   return (
     <Select
-      className="own-select"
+      className={styles["own-select"]}
       options={options}
       placeholder="Wybierz jednostkę"
       variant="borderless"

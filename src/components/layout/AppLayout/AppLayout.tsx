@@ -20,7 +20,7 @@ import {
 
 import type { MenuProps } from "antd";
 
-import "./AppLayout.less";
+import styles from "./AppLayout.module.less";
 
 const { Content, Sider } = Layout;
 
@@ -69,7 +69,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
   return (
-    <Layout className="root">
+    <Layout className={styles["own-root"]}>
       <Sider
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
@@ -78,7 +78,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         <CollapseButton collapsed={collapsed} setCollapsed={setCollapsed}>
           <LayoutOutlined />
         </CollapseButton>
-        <div className="menu-content-wrapper">
+        <div className={styles["own-menu-content-wrapper"]}>
           <Logo collapsed={collapsed} />
           <Menu
             theme="light"
@@ -92,7 +92,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       </Sider>
       <Layout>
         <TopNav />
-        <Content className="main-content">{children}</Content>
+        <Content className={styles["own-main-content"]}>{children}</Content>
       </Layout>
     </Layout>
   );

@@ -31,18 +31,16 @@
     filter: grayscale(100%);
   }
 
-  .ant-btn {
-    padding: 0;
-  }
-
   // klasa resetuje kolor hover na guziku
-  .ant-btn-color-default.ant-btn-variant-link:not(:disabled):not(
-      .ant-btn-disabled
-    ):hover {
+  :global(
+    .ant-btn-color-default.ant-btn-variant-link:not(:disabled):not(
+        .ant-btn-disabled
+      ):hover
+  ) {
     color: @gray-600;
   }
 
-  .anticon {
-    font-size: 20px;
+  :global(.anticon) {
+    font-size: 16px;
   }
 }

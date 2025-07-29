@@ -11,7 +11,7 @@ import {
   InboxOutlined,
 } from "@ant-design/icons";
 
-import "./TopNav.less";
+import styles from "./TopNav.module.less";
 
 const { Header } = Layout;
 
@@ -24,15 +24,15 @@ function TopNav() {
   };
 
   return (
-    <Header className="own-layout-header">
+    <Header className={styles["own-layout-header"]}>
       <Row justify="center" align="middle">
-        <Col className="own-col" flex="20%">
+        <Col className={styles["own-col"]} flex="20%">
           <UnitSelector />
         </Col>
-        <Col className="own-col" flex="35%">
+        <Col className={styles["own-col"]} flex="35%">
           <SearchBar />
         </Col>
-        <Col className="own-col" flex="23%">
+        <Col className={styles["own-col"]} flex="23%">
           <SystemIcon
             icon={<ApiOutlined />}
             label="Offline – brak połączenia z serwerem"
@@ -62,7 +62,7 @@ function TopNav() {
           />
         </Col>
         <Divider />
-        <Col className="own-col" flex="auto">
+        <Col className={styles["own-col"]} flex="auto">
           <UserMenu logoutTime={54} />
         </Col>
       </Row>

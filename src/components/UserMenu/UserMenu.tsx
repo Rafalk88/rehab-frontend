@@ -1,7 +1,7 @@
 import { LogoutOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu, Avatar } from "antd";
-import "./UserMenu.less";
+import styles from "./UserMenu.module.less";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -27,7 +27,9 @@ function UserMenu({ logoutTime }: { logoutTime: number }) {
     },
   ];
 
-  return <Menu className="own-menu-user" mode="horizontal" items={items} />;
+  return (
+    <Menu className={styles["own-menu-user"]} mode="horizontal" items={items} />
+  );
 }
 
 export { UserMenu };

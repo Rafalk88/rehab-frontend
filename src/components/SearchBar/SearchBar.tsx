@@ -2,7 +2,7 @@
 import { SearchOutlined, UserOutlined } from "@ant-design/icons";
 import { AutoComplete, Flex, Input, Space } from "antd";
 
-import "./SearchBar.less";
+import styles from "./SearchBar.module.less";
 
 // TUTAJ LINK DO ŹRÓDŁA - ustaw zeby przeszło na odpowiedni root
 const Title: React.FC<Readonly<{ title?: string }>> = (props) => (
@@ -57,7 +57,7 @@ function SearchBar() {
   return (
     <>
       <AutoComplete
-        className="auto-complete"
+        className={styles["own-auto-complete"]}
         popupMatchSelectWidth={400}
         options={options}
       >

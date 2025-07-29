@@ -1,5 +1,5 @@
 import { Badge, Tooltip, Button } from "antd";
-import "./SystemIcon.less";
+import styles from "./SystemIcon.module.less";
 
 type Props = {
   icon: React.JSX.Element;
@@ -21,35 +21,25 @@ function SystemIcon({
     ? "Offline – brak połączenia z serwerem"
     : "Online – połączenie aktywne";
   const content = onClick ? (
-    <Badge
-      count={badgeCount}
-      offset={[4, 0]}
-      overflowCount={9}
-      className="own-badge"
-    >
+    <Badge count={badgeCount} overflowCount={9} className={styles["own-badge"]}>
       <Button
         variant="link"
         color="default"
         aria-label={label}
         onClick={onClick}
-        className="own-badge-item"
+        className={styles["own-badge-item"]}
         {...restProps}
       >
         {icon}
       </Button>
     </Badge>
   ) : (
-    <Badge
-      count={badgeCount}
-      offset={[4, 0]}
-      overflowCount={9}
-      className="own-badge"
-    >
+    <Badge count={badgeCount} overflowCount={9} className={styles["own-badge"]}>
       <span
         aria-label={labelStatus}
         aria-live="polite"
         role="img"
-        className="own-badge-item"
+        className={styles["own-badge-item"]}
         {...restProps}
       >
         {icon}

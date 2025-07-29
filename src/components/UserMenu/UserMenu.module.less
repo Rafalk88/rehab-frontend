@@ -8,13 +8,13 @@
   align-items: center;
   border-bottom: 0;
 
-  .ant-menu-submenu-title {
+  :global(.ant-menu-submenu-title) {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
-  .ant-menu-title-content {
+  :global(.ant-menu-title-content) {
     display: flex;
     flex-direction: column;
 
@@ -32,12 +32,14 @@
     }
   }
 
-  &.ant-menu-light.ant-menu-horizontal > .ant-menu-submenu:hover::after,
-  &.ant-menu-light.ant-menu-horizontal > .ant-menu-submenu::after {
+  &:global(.ant-menu-light.ant-menu-horizontal)
+    > :global(.ant-menu-submenu:hover::after),
+  &:global(.ant-menu-light.ant-menu-horizontal)
+    > :global(.ant-menu-submenu::after) {
     border-bottom: 0;
   }
 
-  .ant-avatar {
+  :global(.ant-avatar) {
     color: @text-color !important;
   }
 }

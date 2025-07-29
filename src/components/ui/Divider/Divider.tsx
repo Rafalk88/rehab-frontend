@@ -1,11 +1,11 @@
-import "./Divider.less";
+import styles from "./Divider.module.less";
 
 function Divider() {
   return (
     <span
       role="separator"
       aria-orientation="vertical"
-      className="own-divider"
+      className={styles["own-divider"]}
     />
   );
 }

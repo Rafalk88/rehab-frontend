@@ -1,5 +1,4 @@
 @import "../../../styles/variables.less";
-@minHeight: 100vh;
 
 .own-root {
   min-height: @minHeight;
@@ -13,13 +12,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 4px;
+      gap: @spacing-xxs;
     }
   }
 }
 
 .own-menu-content-wrapper {
-  padding-top: 14px;
+  padding-top: @padding-md;
 }
 
 // Resetuje domyślne tło menu z AntD

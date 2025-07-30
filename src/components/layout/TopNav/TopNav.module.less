@@ -4,7 +4,7 @@
   height: @layout-header-height;
   background-color: @sidebar-bg;
   padding: 0;
-  padding-left: 32px;
+  padding-left: @padding-xl;
   border-bottom: 1px solid @border-color;
 }
 
@@ -12,15 +12,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 10px;
+  padding-left: @padding-sm;
 
   &:nth-child(3) {
-    gap: 24px;
+    gap: @spacing-lg;
   }
 
   &:not(:nth-child(1)):not(:nth-child(2)) {
     justify-content: right;
     padding-left: 0;
-    padding-right: 22px;
+    padding-right: @padding-lg;
   }
 }

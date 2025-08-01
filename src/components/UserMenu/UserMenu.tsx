@@ -37,6 +37,7 @@ function UserMenu({ logoutTime }: { logoutTime: number }) {
       onClick={onClick}
       mode="horizontal"
       items={items}
+      selectedKeys={[]} // it will deactivate selected key after click
     />
   );
 }

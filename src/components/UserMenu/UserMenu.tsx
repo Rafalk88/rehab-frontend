@@ -27,8 +27,17 @@ function UserMenu({ logoutTime }: { logoutTime: number }) {
     },
   ];
 
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click ", e);
+  };
+
   return (
-    <Menu className={styles["own-menu-user"]} mode="horizontal" items={items} />
+    <Menu
+      className={styles["own-menu-user"]}
+      onClick={onClick}
+      mode="horizontal"
+      items={items}
+    />
   );
 }
 

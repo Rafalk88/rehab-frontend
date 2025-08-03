@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+[0.2.0-alpha] - 2025-08-03
+
+### Added
+
+- Initial UI layout (sidebar, top navigation, main content) fully styled and responsive.
+
 ## [0.1.0-alpha] - 2025-07-14
 
 ### Added
@@ -33,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-- Initial layout (sidebar + top nav + main content).
+- Initial layout (logic).
 - Auth UI (login, register, error states).
 - Route guards and JWT-based session storage.
 - Calendar & scheduling module placeholder.

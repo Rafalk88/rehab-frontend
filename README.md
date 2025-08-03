@@ -75,16 +75,6 @@ JWT auth with secure cookie or localStorage
 Route protection (middleware / HOC)
 Integration with backend
 
-## 🛣️ Roadmap (Alpha)
-
-Initial project setup
-ESLint + Prettier config
-Auth UI (login/register)
-JWT session support
-Dashboard layout
-Calendar placeholder
-Backend integration
-
 ## 🧾 Versioning
 
 We follow SemVer.

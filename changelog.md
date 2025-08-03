@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Initial UI layout (sidebar, top navigation, main content) fully styled and responsive.
+- Initial UI layout (sidebar, top navigation, main content) fully styled.
 
 ## [0.1.0-alpha] - 2025-07-14
 

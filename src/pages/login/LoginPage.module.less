@@ -1,0 +1,75 @@
+@import "../../styles/variables.less";
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: @minHeight;
+  color: @text-color;
+}
+
+.own-row {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: @maxScreenWidth;
+
+  :global(.ant-col) {
+    display: flex;
+    align-items: center;
+  }
+
+  :first-child:global(.ant-col) {
+    justify-content: flex-end;
+  }
+
+  :global(.ant-card) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 500px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  :global(.ant-card-cover) {
+    padding-top: @padding-xl;
+    padding-bottom: @padding-xl;
+  }
+
+  .own-image {
+    object-fit: cover;
+    border-top-left-radius: @base-unit * 2;
+    border-bottom-left-radius: @base-unit * 2;
+    box-shadow:
+      0 1px 2px 0 rgba(0, 0, 0, 0.03),
+      0 1px 6px -1px rgba(0, 0, 0, 0.02),
+      0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  }
+
+  .own-logo {
+    width: 100%;
+  }
+}
+
+.own-row-last {
+  padding-top: @padding-lg;
+  padding-bottom: @padding-lg;
+}
+
+.own-link {
+  padding-left: @padding-xxs;
+  color: @text-color;
+}
+
+.own-form {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-md;
+
+  :global(.ant-form-item-label) {
+    padding-bottom: @padding-lg;
+  }
+}

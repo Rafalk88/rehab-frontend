@@ -1,6 +1,6 @@
 import { TopNav } from "@/components/layout/TopNav";
 import { CollapseButton } from "./CollapseButton";
-import { Logo } from "./Logo";
+import { Logo } from "../../Logo";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useState } from "react";
 import { useRouter } from "next/router";

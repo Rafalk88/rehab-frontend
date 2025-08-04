@@ -2,6 +2,8 @@
 
 This is the frontend of the **Rehabilitacja Module** application — handling user authentication, session scheduling, and integration with the backend API.
 
+![Przykładowy zrzut ekranu - ekran logowania](screen.png)
+
 ---
 
 ## 📦 Tech Stack

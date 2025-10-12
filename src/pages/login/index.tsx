@@ -1,8 +1,11 @@
+import api from "@/lib/api";
+import Cookies from "js-cookie";
 import { Logo } from "@/components/Logo";
-import { Card, Col, Row, Button, Form, Input } from "antd";
+import { Card, Col, Row, Button, Form, Input, message } from "antd";
 import type { FormProps } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { LoginOutlined } from "@ant-design/icons";
 import styles from "./LoginPage.module.less";
 
@@ -12,15 +15,35 @@ type FieldType = {
   remember?: string;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
 export default function LoginPage() {
+  const router = useRouter();
+
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+    try {
+      const res = await api.post("/auth/login", {
+        login: values.username,
+        password: values.password,
+      });
+
+      const { access_token, refresh_token } = res.data;
+
+      Cookies.set("access_token", access_token, {
+        secure: true,
+        sameSite: "strict",
+      });
+      Cookies.set("refresh_token", refresh_token, {
+        secure: true,
+        sameSite: "strict",
+      });
+
+      router.push("/");
+    } catch (err: any) {
+      const errorMsg =
+        err.response?.data?.message || "Błąd logowania. Spróbuj ponownie.";
+      message.error(errorMsg);
+    }
+  };
+
   return (
     <section>
       <Row className={styles["own-row"]} justify="center" align="middle">
@@ -44,7 +67,6 @@ export default function LoginPage() {
               variant="filled"
               initialValues={{ remember: true }}
               onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
               autoComplete="off"
               requiredMark={false}
               scrollToFirstError={true}

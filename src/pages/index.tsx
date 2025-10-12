@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AppLayout } from "@/components/layout";
-import LoginPage from "./login/LoginPage";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +21,6 @@ export default function Home() {
       </Head>
       <div className={`${geistSans.variable} ${geistMono.variable}`}>
         <AppLayout>To jest apka</AppLayout>
-        {/*<LoginPage />*/}
       </div>
     </>
   );

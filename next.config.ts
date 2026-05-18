@@ -42,7 +42,7 @@ const nextConfig = withBundleAnalyzer(
     // Other Config Here...
     reactStrictMode: true,
 
-    webpack(config) {
+    webpack(config: any) {
       config.module.rules.push({
         test: /\.md$/,
         use: "frontmatter-markdown-loader",

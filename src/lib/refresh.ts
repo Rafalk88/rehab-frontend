@@ -1,4 +1,4 @@
-import api from "./api";
+import axios from "axios";
 import Cookies from "js-cookie";
 
 export const refreshToken = async () => {
@@ -6,7 +6,7 @@ export const refreshToken = async () => {
   if (!refresh_token) return;
 
   try {
-    const res = await api.post("/auth/refresh-token", {
+    const res = await axios.post("/auth/refresh-token", {
       refreshToken: refresh_token,
     });
     const { access_token, refresh_token: new_refresh } = res.data;
@@ -25,5 +25,6 @@ export const refreshToken = async () => {
     console.error("Refresh token error", err);
     Cookies.remove("access_token");
     Cookies.remove("refresh_token");
+    window.location.href = '/login';
   }
 };

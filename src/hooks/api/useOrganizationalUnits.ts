@@ -1,7 +1,7 @@
-import axios from "axios";
+import api from "../../lib/api";
 import { useQuery } from "@tanstack/react-query";
 
-type OrganizationalUnit = {
+export type OrganizationalUnit = {
     id: string;
     name: string;
     description: string;
@@ -11,7 +11,7 @@ export function useOrganizationalUnits(): ReturnType<typeof useQuery<Organizatio
   return useQuery({
     queryKey: ["organizationalUnits"],
     queryFn: async () => {
-      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/organizational-units`);
+      const { data } = await api.get("/organizational-units");
       return data as OrganizationalUnit[];
     },
   });

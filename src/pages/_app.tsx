@@ -4,11 +4,13 @@ import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import theme from "@/theme/themeConfig";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const [queryClient] = useState(() => new QueryClient());
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,7 +32,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ConfigProvider theme={theme}>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </ConfigProvider>
   );
 }

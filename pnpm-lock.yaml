@@ -14,6 +14,9 @@ importers:
       '@next/bundle-analyzer':
         specifier: ^15.4.4
         version: 15.5.18
+      '@tanstack/react-query':
+        specifier: ^4.44.0
+        version: 4.44.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       antd:
         specifier: ^5.26.4
         version: 5.29.3(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -51,6 +54,9 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.3.5
+      '@tanstack/eslint-plugin-query':
+        specifier: ^4.44.0
+        version: 4.44.0(eslint@9.39.4)
       '@types/js-cookie':
         specifier: ^3.0.6
         version: 3.0.6
@@ -566,6 +572,26 @@ packages:
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
+
+  '@tanstack/eslint-plugin-query@4.44.0':
+    resolution: {integrity: sha512-lIUBcE8VeR2Wf54c5gHTVAOFbiXaSmuN4jQjN46Bhthd/2xDqF9hpCKLC0HevLffbinRtsj+amSZcgMkJ3/LLg==}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+
+  '@tanstack/query-core@4.44.0':
+    resolution: {integrity: sha512-swSgb7OiPRR3UuIL7NuDrZNSMGmQD+wdtHxPD7j60SvBEnxbXurl5XOirtGEX2gm2hbK6mC8kMV1I+uO3l0UOw==}
+
+  '@tanstack/react-query@4.44.0':
+    resolution: {integrity: sha512-RuIqHYrS98LrK/8kJJOJMMSQ/BCpojwsXDh7p0fBmp38ZOz6dlk+uyFRRusH+V+t3POoCsDOQ2zhomEYOeReXw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
 
   '@tybys/wasm-util@0.10.2':
     resolution: {integrity: sha512-RoBvJ2X0wuKlWFIjrwffGw1IqZHKQqzIchKaadZZfnNpsAYp2mM0h36JtPCjNDAHGgYez/15uMBpfGwchhiMgg==}
@@ -2772,6 +2798,11 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  use-sync-external-store@1.6.0:
+    resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -3264,6 +3295,20 @@ snapshots:
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
+
+  '@tanstack/eslint-plugin-query@4.44.0(eslint@9.39.4)':
+    dependencies:
+      eslint: 9.39.4
+
+  '@tanstack/query-core@4.44.0': {}
+
+  '@tanstack/react-query@4.44.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+    dependencies:
+      '@tanstack/query-core': 4.44.0
+      react: 19.2.6
+      use-sync-external-store: 1.6.0(react@19.2.6)
+    optionalDependencies:
+      react-dom: 19.2.6(react@19.2.6)
 
   '@tybys/wasm-util@0.10.2':
     dependencies:
@@ -5816,6 +5861,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  use-sync-external-store@1.6.0(react@19.2.6):
+    dependencies:
+      react: 19.2.6
 
   util-deprecate@1.0.2: {}
 

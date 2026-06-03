@@ -30,6 +30,7 @@
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@next/bundle-analyzer": "^15.4.4",
+    "@tanstack/react-query": "^4.44.0",
     "antd": "^5.26.4",
     "axios": "^1.12.2",
     "env-var": "^7.5.0",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tanstack/eslint-plugin-query": "^4.44.0",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",

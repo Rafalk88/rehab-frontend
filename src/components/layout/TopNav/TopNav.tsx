@@ -1,11 +1,11 @@
 import { UserMenu } from "@/components/UserMenu";
 import { UnitSelector } from "@/components/UnitSelector";
 import { SearchBar } from "@/components/SearchBar";
+import { ApiConnectionIcon } from "./ApiConnectionIcon";
 import { Divider, SystemIcon } from "@/components/ui";
 import { Col, Row } from "antd";
 import { Layout } from "antd";
 import {
-  ApiOutlined,
   AppstoreOutlined,
   BellOutlined,
   InboxOutlined,
@@ -33,32 +33,26 @@ function TopNav() {
           <SearchBar />
         </Col>
         <Col className={styles["own-col"]} flex="23%">
-          <SystemIcon
-            icon={<ApiOutlined />}
-            label="Offline – brak połączenia z serwerem"
-            data-pulse={true}
-            pulse={true}
-            data-disabled={false}
-          />
+          <ApiConnectionIcon />
           <SystemIcon
             icon={<AppstoreOutlined />}
             label="Tryb nagły"
-            data-pulse={false}
-            data-disabled={false}
+            data-pulse={false.toString()}
+            data-disabled={false.toString()}
           />
           <SystemIcon
             icon={<BellOutlined />}
             label="Notyfikacje"
             badgeCount={4}
             onClick={handleClickNotofications}
-            data-disabled={false}
+            data-disabled={false.toString()}
           />
           <SystemIcon
             icon={<InboxOutlined />}
             label="Wiadomości"
             badgeCount={10}
             onClick={handleClickMessages}
-            data-disabled={false}
+            data-disabled={false.toString()}
           />
         </Col>
         <Divider />

@@ -1,3 +1,4 @@
+import { useAutoLogout } from "@/hooks/useAutoLogout";
 import { UserMenu } from "@/components/UserMenu";
 import { UnitSelector } from "@/components/UnitSelector";
 import { SearchBar } from "@/components/SearchBar";
@@ -16,6 +17,8 @@ import styles from "./TopNav.module.less";
 const { Header } = Layout;
 
 function TopNav() {
+  const resetTimer = useAutoLogout();
+
   const handleClickNotofications = () => {
     console.log("click notyfikacje");
   };
@@ -57,7 +60,7 @@ function TopNav() {
         </Col>
         <Divider />
         <Col className={styles["own-col"]} flex="auto">
-          <UserMenu logoutTime={54} />
+          <UserMenu logoutTime={resetTimer} />
         </Col>
       </Row>
     </Header>

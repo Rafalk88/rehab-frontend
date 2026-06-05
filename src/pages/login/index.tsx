@@ -17,6 +17,7 @@ type FieldType = {
 
 export default function LoginPage() {
   const router = useRouter();
+  const [form] = Form.useForm();
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     try {
@@ -40,7 +41,11 @@ export default function LoginPage() {
     } catch (err: any) {
       const errorMsg =
         err.response?.data?.message || "Błąd logowania. Spróbuj ponownie.";
-      message.error(errorMsg);
+
+      form.setFields([
+        { name: 'username', errors: [errorMsg] },
+        { name: 'password', errors: [errorMsg] }
+      ]);
     }
   };
 
@@ -61,6 +66,7 @@ export default function LoginPage() {
           <Card cover={<Logo collapsed={false} />} variant="borderless">
             <Form
               className={styles["own-form"]}
+              form={form}
               name="basic"
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 24 }}

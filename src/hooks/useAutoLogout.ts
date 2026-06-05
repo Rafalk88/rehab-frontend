@@ -18,6 +18,9 @@ export function useAutoLogout() {
       if (!refresh_token) return;
 
       await api.post("/auth/logout", { refreshToken: refresh_token });
+      Cookies.remove("access_token");
+      Cookies.remove("refresh_token");
+      router.push("/login");
     }, AUTO_LOGOUT_TIME_BY_15_MIN);
 
     lastResetTime.current = Date.now();

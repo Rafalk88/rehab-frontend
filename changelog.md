@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.3.0-alpha] - 2026-06-05
+
+### Added
+
+- New ApiConnectionIcon for navigation in AppLayout with health check logic.
+- Auto logout after 15 min implementation.
+
+### Changed
+
+- Changed the hardcoded list of organizational units to one retrieved from the database using react query.
+
 ## [0.2.0-alpha] - 2025-08-03
 
 ### Added

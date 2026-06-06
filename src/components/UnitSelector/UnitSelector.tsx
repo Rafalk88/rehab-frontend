@@ -1,5 +1,8 @@
 import { Select } from "antd";
-import { useOrganizationalUnits, type OrganizationalUnit } from "../../hooks/api/useOrganizationalUnits";
+import {
+  useOrganizationalUnits,
+  type OrganizationalUnit,
+} from "../../hooks/api/useOrganizationalUnits";
 import styles from "./UnitSelector.module.less";
 import { useMemo } from "react";
 

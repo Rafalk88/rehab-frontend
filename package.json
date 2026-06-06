@@ -27,6 +27,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watchAll=false",
+    "test:int": "jest --config jest.int.config.ts --watchAll=false",
     "test:cov": "jest --coverage",
     "prepare": "husky"
   },

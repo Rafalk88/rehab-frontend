@@ -27,7 +27,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watchAll=false",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",

@@ -17,7 +17,7 @@ function SystemIcon({
   pulse,
   ...restProps
 }: Props) {
-  const labelStatus = !pulse
+  const labelStatus = pulse
     ? "Offline – brak połączenia z serwerem"
     : "Online – połączenie aktywne";
   const content = onClick ? (

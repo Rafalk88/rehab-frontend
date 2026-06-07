@@ -5,12 +5,18 @@ import Cookies from "js-cookie";
 
 const AUTO_LOGOUT_TIME_BY_15_MIN = 15 * 60 * 1000;
 
+/**
+ * Auto logout hook counting time to logout and refresh after user activity (onClick, keyUp, keyDown)
+ * @returns number - time in minutes to logout
+ */
 export function useAutoLogout() {
   const router = useRouter();
   const timerRef = useRef<NodeJS.Timeout>(null);
   const remainingTimeIntervalRef = useRef<NodeJS.Timeout>(null);
   const lastResetTime = useRef(0);
-  const [remainingTime, setRemainingTime] = useState(() => AUTO_LOGOUT_TIME_BY_15_MIN);
+  const [remainingTime, setRemainingTime] = useState(
+    () => AUTO_LOGOUT_TIME_BY_15_MIN
+  );
 
   const startTimer = () => {
     timerRef.current = setTimeout(async () => {
@@ -28,10 +34,11 @@ export function useAutoLogout() {
     remainingTimeIntervalRef.current = setInterval(() => {
       setRemainingTime(getRemainingTime());
     }, 1000);
-  }
+  };
 
   const getRemainingTime = () => {
-    const result = AUTO_LOGOUT_TIME_BY_15_MIN - (Date.now() - lastResetTime.current);
+    const result =
+      AUTO_LOGOUT_TIME_BY_15_MIN - (Date.now() - lastResetTime.current);
     const resultToMinutes = Math.floor(result / 1000 / 60);
     return Math.max(0, resultToMinutes);
   };
@@ -40,26 +47,27 @@ export function useAutoLogout() {
     startTimer();
 
     const resetTimer = () => {
-        if (timerRef.current) {
-          clearTimeout(timerRef.current);
-        }
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
 
-        if (remainingTimeIntervalRef.current) {
-          clearInterval(remainingTimeIntervalRef.current);
-        }
-        startTimer();
+      if (remainingTimeIntervalRef.current) {
+        clearInterval(remainingTimeIntervalRef.current);
+      }
+      startTimer();
     };
 
-    window.addEventListener('keyup', resetTimer);
-    window.addEventListener('keydown', resetTimer);
-    window.addEventListener('click', resetTimer);
+    window.addEventListener("keyup", resetTimer);
+    window.addEventListener("keydown", resetTimer);
+    window.addEventListener("click", resetTimer);
 
     return () => {
-        window.removeEventListener('keyup', resetTimer);
-        window.removeEventListener('keydown', resetTimer);
-        window.removeEventListener('click', resetTimer);
-        timerRef.current && clearTimeout(timerRef.current);
-        remainingTimeIntervalRef.current && clearInterval(remainingTimeIntervalRef.current);
+      window.removeEventListener("keyup", resetTimer);
+      window.removeEventListener("keydown", resetTimer);
+      window.removeEventListener("click", resetTimer);
+      timerRef.current && clearTimeout(timerRef.current);
+      remainingTimeIntervalRef.current &&
+        clearInterval(remainingTimeIntervalRef.current);
     };
   }, [router]);
 

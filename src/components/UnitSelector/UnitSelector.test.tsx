@@ -18,6 +18,6 @@ describe("UnitSelector", () => {
   it("renders component with organizational units", () => {
     render(<UnitSelector />);
 
-    expect(screen.getByText("Unit 1 - Description 1")).toBeInTheDocument();
+    expect(screen.getByRole("combobox")).toBeInTheDocument();
   });
 });

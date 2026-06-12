@@ -47,7 +47,7 @@ const items: MenuItem[] = [
     type: "group",
     children: [
       getItem("Rejestracja", "/registration", <ReadOutlined />),
-      getItem("Gabinet", "/gabinet", <DesktopOutlined />),
+      getItem("Gabinet", "/office", <DesktopOutlined />),
       getItem("Pacjenci", "/patients", <TeamOutlined />),
       getItem("Statystyka", "/statistic", <FundOutlined />),
       getItem("Rozliczenia", "/settlements", <EuroCircleOutlined />),
@@ -85,7 +85,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
             selectedKeys={[router.pathname]}
             mode="inline"
             items={items}
-            onClick={(key) => router.push(String(key))}
+            onClick={(key) => router.push(String(key.key))}
           />
         </div>
         <ThemeSwitcher collapsed={collapsed} />

@@ -1,24 +1,43 @@
 import { useUser } from "@/store/useUser";
 import { useVisits, type Visit } from "@/hooks/api/useVisits";
 import { AppLayout } from "@/components/layout";
-import { Table, Select } from "antd";
+import {
+  Table,
+  Select,
+  DatePicker,
+  Flex,
+  type TimeRangePickerProps,
+} from "antd";
+import dayjs from "dayjs";
 import { useState, useCallback } from "react";
+
+const { RangePicker } = DatePicker;
 
 type STATUS = "PLANNED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
 
 export default function Office() {
   const userStore = useUser();
   const orgUnit = userStore.organizationalUnit;
-  const today = new Date();
+  const today = dayjs().toDate();
 
   const [status, setStatus] = useState<STATUS>("IN_PROGRESS");
+  const [dateFrom, setDateFrom] = useState(today);
+  const [dateTo, setDateTo] = useState(today);
+
+  const { data: response } = useVisits(orgUnit, dateFrom, dateTo, status);
+  const visits = response?.data;
 
   const handleChange = useCallback((value: STATUS) => {
     setStatus(value);
   }, []);
 
-  const { data: response } = useVisits(orgUnit, undefined, status);
-  const visits = response?.data;
+  const onChange: TimeRangePickerProps["onChange"] = useCallback(
+    (_, dateString) => {
+      setDateFrom(new Date(dateString[0]));
+      setDateTo(new Date(dateString[1]));
+    },
+    []
+  );
 
   const columns = [
     {
@@ -49,17 +68,20 @@ export default function Office() {
 
   return (
     <AppLayout>
-      <Select
-        defaultValue="IN_PROGRESS"
-        style={{ width: 120 }}
-        onChange={handleChange}
-        options={[
-          { value: "PLANNED", label: "Zaplanowani" },
-          { value: "IN_PROGRESS", label: "W trakcie" },
-          { value: "COMPLETED", label: "Zakończeni" },
-          { value: "CANCELLED", label: "Anulowani" },
-        ]}
-      />
+      <Flex gap="small" justify="flex-start" align="flex-start">
+        <Select
+          defaultValue="IN_PROGRESS"
+          style={{ width: 120 }}
+          onChange={handleChange}
+          options={[
+            { value: "PLANNED", label: "Zaplanowani" },
+            { value: "IN_PROGRESS", label: "W trakcie" },
+            { value: "COMPLETED", label: "Zakończeni" },
+            { value: "CANCELLED", label: "Anulowani" },
+          ]}
+        />
+        <RangePicker defaultValue={[dayjs(), dayjs()]} onChange={onChange} />
+      </Flex>
       <Table dataSource={visits} columns={columns} rowKey="id" />
     </AppLayout>
   );

@@ -9,6 +9,11 @@ export interface Visit {
   orgId: string;
   date: Date;
   status: VisitStatus;
+  patient: {
+    firstName: { firstName: string } | null;
+    surname: { surname: string } | null;
+    pesel: string;
+  };
 }
 
 /**

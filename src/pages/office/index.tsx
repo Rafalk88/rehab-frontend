@@ -1,13 +1,23 @@
 import { useUser } from "@/store/useUser";
 import { useVisits, type Visit } from "@/hooks/api/useVisits";
 import { AppLayout } from "@/components/layout";
-import { Table } from "antd";
+import { Table, Select } from "antd";
+import { useState, useCallback } from "react";
+
+type STATUS = "PLANNED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
 
 export default function Office() {
   const userStore = useUser();
   const orgUnit = userStore.organizationalUnit;
+  const today = new Date();
 
-  const { data: response } = useVisits(orgUnit);
+  const [status, setStatus] = useState<STATUS>("IN_PROGRESS");
+
+  const handleChange = useCallback((value: STATUS) => {
+    setStatus(value);
+  }, []);
+
+  const { data: response } = useVisits(orgUnit, undefined, status);
   const visits = response?.data;
 
   const columns = [
@@ -39,6 +49,17 @@ export default function Office() {
 
   return (
     <AppLayout>
+      <Select
+        defaultValue="IN_PROGRESS"
+        style={{ width: 120 }}
+        onChange={handleChange}
+        options={[
+          { value: "PLANNED", label: "Zaplanowani" },
+          { value: "IN_PROGRESS", label: "W trakcie" },
+          { value: "COMPLETED", label: "Zakończeni" },
+          { value: "CANCELLED", label: "Anulowani" },
+        ]}
+      />
       <Table dataSource={visits} columns={columns} rowKey="id" />
     </AppLayout>
   );

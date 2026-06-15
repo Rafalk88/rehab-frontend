@@ -8,6 +8,7 @@ export interface Visit {
   id: string;
   orgId: string;
   date: string;
+  completionDate: string;
   status: VisitStatus;
   patient: {
     firstName: { firstName: string } | null;

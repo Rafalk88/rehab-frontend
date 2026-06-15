@@ -68,6 +68,18 @@ export default function Office() {
       ),
     },
     {
+      title: "Data wykonania",
+      dataIndex: "completionDate",
+      key: "completionDate",
+      render: (_v: string, r: Visit) => (
+        <p>
+          {r.completionDate
+            ? dayjs(r.completionDate).format("DD.MM.YYYY HH:mm")
+            : ""}
+        </p>
+      ),
+    },
+    {
       title: "Imię",
       dataIndex: "name",
       key: "name",

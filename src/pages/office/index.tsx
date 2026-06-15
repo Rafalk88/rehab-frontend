@@ -1,3 +1,9 @@
+import dayjs from "dayjs";
+import weekday from "dayjs/plugin/weekday";
+import localeData from "dayjs/plugin/localeData";
+
+dayjs.extend(weekday);
+dayjs.extend(localeData);
 import { useUser } from "@/store/useUser";
 import { useVisits, type Visit } from "@/hooks/api/useVisits";
 import { AppLayout } from "@/components/layout";
@@ -8,7 +14,6 @@ import {
   Flex,
   type TimeRangePickerProps,
 } from "antd";
-import dayjs from "dayjs";
 import { useState, useCallback } from "react";
 
 const { RangePicker } = DatePicker;
@@ -24,7 +29,15 @@ export default function Office() {
   const [dateFrom, setDateFrom] = useState(today);
   const [dateTo, setDateTo] = useState(today);
 
-  const { data: response } = useVisits(orgUnit, dateFrom, dateTo, status);
+  const statusDateFromFilter =
+    status === "IN_PROGRESS" ? new Date("2000-01-01") : dateFrom;
+
+  const { data: response } = useVisits(
+    orgUnit,
+    statusDateFromFilter,
+    dateTo,
+    status
+  );
   const visits = response?.data;
 
   const handleChange = useCallback((value: STATUS) => {

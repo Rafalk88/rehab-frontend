@@ -7,8 +7,7 @@ type VisitStatus = "PLANNED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
 export interface Visit {
   id: string;
   orgId: string;
-  dateFrom: Date;
-  dateTo: Date;
+  date: string;
   status: VisitStatus;
   patient: {
     firstName: { firstName: string } | null;

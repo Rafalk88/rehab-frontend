@@ -60,6 +60,14 @@ export default function Office() {
       render: (_v: string, _r: Visit, i: number) => <p>{i + 1}</p>,
     },
     {
+      title: "Data rejestracji",
+      dataIndex: "date",
+      key: "date",
+      render: (_v: string, r: Visit) => (
+        <p>{dayjs(r.date).format("DD.MM.YYYY HH:mm")}</p>
+      ),
+    },
+    {
       title: "Imię",
       dataIndex: "name",
       key: "name",

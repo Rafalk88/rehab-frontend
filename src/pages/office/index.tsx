@@ -60,11 +60,25 @@ export default function Office() {
       render: (_v: string, _r: Visit, i: number) => <p>{i + 1}</p>,
     },
     {
-      title: "Data rejestracji",
-      dataIndex: "date",
-      key: "date",
+      title: "Data planowania",
+      dataIndex: "plannedDate",
+      key: "plannedDate",
       render: (_v: string, r: Visit) => (
-        <p>{dayjs(r.date).format("DD.MM.YYYY HH:mm")}</p>
+        <p>
+          {r.plannedDate ? dayjs(r.plannedDate).format("DD.MM.YYYY HH:mm") : ""}
+        </p>
+      ),
+    },
+    {
+      title: "Data rejestracji",
+      dataIndex: "registerDate",
+      key: "registerDate",
+      render: (_v: string, r: Visit) => (
+        <p>
+          {r.registerDate
+            ? dayjs(r.registerDate).format("DD.MM.YYYY HH:mm")
+            : ""}
+        </p>
       ),
     },
     {

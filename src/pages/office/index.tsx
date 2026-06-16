@@ -1,9 +1,10 @@
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
-
 dayjs.extend(weekday);
 dayjs.extend(localeData);
+
+import Checkbox from "./Checkbox";
 import { useUser } from "@/store/useUser";
 import { useVisits, type Visit } from "@/hooks/api/useVisits";
 import { AppLayout } from "@/components/layout";
@@ -110,6 +111,20 @@ export default function Office() {
       dataIndex: "pesel",
       key: "pesel",
       render: (_v: string, r: Visit) => <p>{r.patient.pesel}</p>,
+    },
+    {
+      title: "EWUŚ",
+      dataIndex: "ewus",
+      key: "ewus",
+      render: (_v: string, r: Visit) => (
+        <Checkbox checkValue={r.ewusVerifiedAt} />
+      ),
+    },
+    {
+      title: "Rozliczenie",
+      dataIndex: "billing",
+      key: "billing",
+      render: (_v: string, r: Visit) => <Checkbox checkValue={r.billed} />,
     },
   ];
 

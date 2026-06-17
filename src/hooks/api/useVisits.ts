@@ -2,7 +2,7 @@ import type { OrganizationalUnit } from "../api/useOrganizationalUnits";
 import api from "@/lib/api";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 
-type VisitStatus = "PLANNED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
+export type VisitStatus = "PLANNED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
 
 export interface Visit {
   id: string;

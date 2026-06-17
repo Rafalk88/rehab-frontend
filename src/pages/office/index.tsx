@@ -7,6 +7,7 @@ dayjs.extend(localeData);
 import Checkbox from "./Checkbox";
 import { useUser } from "@/store/useUser";
 import { useVisits, type Visit } from "@/hooks/api/useVisits";
+import { useUpdateVisitStatus } from "@/hooks/api/useUpdateVisitStatus";
 import { AppLayout } from "@/components/layout";
 import {
   Table,
@@ -45,6 +46,12 @@ export default function Office() {
     setStatus(value);
   }, []);
 
+  const { mutate } = useUpdateVisitStatus();
+
+  const handleStatusChange = useCallback((id: string, status: STATUS) => {
+    mutate({ id, status });
+  }, []);
+
   const onChange: TimeRangePickerProps["onChange"] = useCallback(
     (_, dateString) => {
       setDateFrom(new Date(dateString[0]));
@@ -59,6 +66,24 @@ export default function Office() {
       dataIndex: "lp",
       key: "lp",
       render: (_v: string, _r: Visit, i: number) => <p>{i + 1}</p>,
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (_v: string, r: Visit) => (
+        <Select
+          defaultValue={r.status}
+          style={{ width: 100 }}
+          onChange={(value) => handleStatusChange(r.id, value)}
+          options={[
+            { value: "PLANNED", label: "Zaplanowani" },
+            { value: "IN_PROGRESS", label: "W trakcie" },
+            { value: "COMPLETED", label: "Zakończeni" },
+            { value: "CANCELLED", label: "Anulowani" },
+          ]}
+        />
+      ),
     },
     {
       title: "Data planowania",

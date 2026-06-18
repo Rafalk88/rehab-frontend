@@ -73,13 +73,13 @@ Standard for all project scripts and dependencies.
 
 ---
 
-## 6. ⚙️ **No Husky or Git Hooks (Yet)**
+## 6. ⚙️ **Husky Pre-commit Hooks**
 
 **Why:**
-To keep the development setup lightweight and focused. Hooks and automation (like lint-staged or pre-commit checks) will be introduced later once core features are stable.
+Code quality and test coverage need to be enforced automatically before each commit.
 
 **Decision:**
-Skip Husky for now. Manual linting/formatting enforced during review.
+Husky added with pre-commit hook running `pnpm test`. Tests must pass before commit is allowed.
 
 ---
 
@@ -141,9 +141,26 @@ To maintain encapsulation and traceability, we apply styles by adding our own sc
 
 🗂 If this approach grows in complexity, we’ll extract it into a separate styling.md.
 
+## 10. 🗂️ **Zustand for Global State**
+
+**Why:**
+Organizational unit selection needs to be shared between `UnitSelector` (TopNav) and `Office` page. Context API would cause unnecessary rerenders — Zustand stores state outside React tree and only rerenders components that subscribe to changed values.
+
+**Decision:**
+`useUser` store in `src/store/useUser.ts` holds `organizationalUnit` (selected unit name). Components subscribe via selector pattern.
+
+---
+
+## 11. 🔄 **React Query for Server State**
+
+**Why:**
+All API data needs caching, deduplication, and automatic refetching. Managing this manually with `useEffect` and `useState` leads to boilerplate and race conditions.
+
+**Decision:**
+`@tanstack/react-query` used for all API calls. Each hook wraps `useQuery` or `useMutation`. Cache is invalidated after mutations via `queryClient.invalidateQueries`.
+
 ## Next Planned Decisions
 
-- Zustand setup and structure
 - Folder structure (feature-based or domain-based)
 - Authentication handling pattern
 - Design system or shared UI patterns

@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.4.0-alpha] - 2026-06-18
+
+### Added
+
+- Office module — visit list with filtering by status and date range
+- `useVisits` hook — fetches visits by organizational unit, date range and status with React Query cache
+- `useUpdateVisitStatus` hook — PATCH visit status with automatic cache invalidation
+- `useOrganizationalUnits` hook — fetches organizational units from API
+- `usePrismaHealthCheck` hook — health check with `refetchInterval`
+- `useAutoLogout` hook — auto logout after inactivity with countdown timer
+- `useUser` Zustand store — global organizational unit selection
+- `ApiConnectionIcon` component — server connection status indicator
+- `Checkbox` component — read-only status indicator for EWUŚ and billing
+- Jest + React Testing Library setup with unit and integration test configs
+- Husky pre-commit hook running tests before commit
+
+### Changed
+
+- `UnitSelector` — now fetches data from API instead of hardcoded list, connected to Zustand store
+- Login page — error handling with `form.setFields` instead of toast
+- Visit filtering — `IN_PROGRESS` status uses `dateFrom = 2000-01-01` to show all active visits
+
+## [Unreleased]
+
+- Create visit form
+- Edit visit data
+- Procedures per visit
+- Billing module
+
 ## [0.3.0-alpha] - 2026-06-05
 
 ### Added

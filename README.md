@@ -38,7 +38,7 @@ rehab-frontend/
 
 0. **IMPORTANT**
 
-The frontend won't work without backend server. It will only show /login page. For complexity go to 
+The frontend won't work without backend server. It will only show /login page. For complexity go to
 [BACKEND](https://github.com/Rafalk88/rehabilitacja-backend.git)
 and install server first.
 
@@ -83,7 +83,13 @@ pnpm run lint
 
 ## 📖 Features
 
-- Auto logout after 15 minutes inactivity
+- JWT authentication with automatic token refresh via axios interceptor
+- Role-based organizational unit selection (Zustand store)
+- Office module — visit list with filtering by status and date range
+- Auto logout after 15 minutes inactivity with countdown timer
+- Server health check indicator in navigation
+- React Query for all API calls with caching and automatic refetch
+- Unit and integration tests (Jest + React Testing Library)
 
 ## 📘 Documentation
 

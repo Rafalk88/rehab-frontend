@@ -164,3 +164,24 @@ All API data needs caching, deduplication, and automatic refetching. Managing th
 - Folder structure (feature-based or domain-based)
 - Authentication handling pattern
 - Design system or shared UI patterns
+
+## 12. 🧪 **Jest Module Mocking — Default Exports**
+
+**Why:**
+While testing `useVisits`, mocking `@/lib/api` (a module with `export default api`) produced inconsistent results between what `console.log` showed inside the test file and what the hook actually received at runtime. The mock structure `{ default: { get: jest.fn() } }` looked correct in test-file logs, but caused `TypeError: api.get is not a function` when the hook called `api.get(...)`.
+
+**Decision:**
+
+- When mocking a module with `export default`, the mock shape must match what the **consumer of the import** (the hook/component under test) actually sees — not what `console.log` shows inside the test file itself.
+- `next/jest`'s Babel/SWC transform can produce different interop behavior depending on import context.
+- Correct mock pattern for `import api from "@/lib/api"`:
+
+```typescript
+jest.mock("@/lib/api", () => ({
+  get: jest.fn().mockResolvedValue({ data: { data: [] } }),
+}));
+```
+
+(no nested `default` key, despite what `console.log` may suggest)
+
+- **Diagnostic method**: trust the runtime error thrown by the code under test over assumptions from logging the mock in isolation.

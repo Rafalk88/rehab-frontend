@@ -4,9 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@testing-library/jest-dom";
 
 jest.mock("@/lib/api", () => ({
-  default: {
-    get: jest.fn(),
-  },
+  get: jest.fn(),
 }));
 
 import api from "@/lib/api";
@@ -23,16 +21,10 @@ const wrapper = ({ children }: { children: React.ReactNode }) => (
 
 describe("", () => {
   it("should check if hook generate right parameters", async () => {
-    expect(true).toBe(true);
+    const { result } = renderHook(() => useVisits("POR19"), { wrapper });
 
-    // const { result } = renderHook(() => useVisits("POR19"), { wrapper });
-
-    // console.log(result.current.fetchStatus);
-
-    // await waitFor(() => {
-    //   expect((api as any).default.get).toHaveBeenCalledWith(
-    //     "/visits?orgId=abc-123"
-    //   );
-    // });
+    await waitFor(() => {
+      expect((api as any).get).toHaveBeenCalledWith("/visits?orgId=abc-123");
+    });
   });
 });

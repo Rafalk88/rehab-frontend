@@ -37,7 +37,6 @@ function PaginationTable({
       onChange={onChange}
       pageSize={limit}
       onShowSizeChange={onShowSizeChange}
-      pageSizeOptions={[2, 5, 10, 20]}
     />
   );
 }

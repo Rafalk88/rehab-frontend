@@ -9,6 +9,7 @@ import { useUser } from "@/store/useUser";
 import { useVisits, type Visit } from "@/hooks/api/useVisits";
 import { useUpdateVisitStatus } from "@/hooks/api/useUpdateVisitStatus";
 import { AppLayout } from "@/components/layout";
+import { PaginationTable } from "@/components/PaginationTable";
 import {
   Table,
   Select,
@@ -16,7 +17,7 @@ import {
   Flex,
   type TimeRangePickerProps,
 } from "antd";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 const { RangePicker } = DatePicker;
 
@@ -30,6 +31,8 @@ export default function Office() {
   const [status, setStatus] = useState<STATUS>("IN_PROGRESS");
   const [dateFrom, setDateFrom] = useState(today);
   const [dateTo, setDateTo] = useState(today);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(20);
 
   const statusDateFromFilter =
     status === "IN_PROGRESS" ? new Date("2000-01-01") : dateFrom;
@@ -38,8 +41,8 @@ export default function Office() {
     dateFrom: statusDateFromFilter,
     dateTo,
     status,
-    page: 1,
-    limit: 20,
+    page,
+    limit,
   });
   const visits = response?.data;
 
@@ -154,6 +157,10 @@ export default function Office() {
     },
   ];
 
+  useEffect(() => {
+    setPage(1);
+  }, [status, dateFrom, dateTo, limit]);
+
   return (
     <AppLayout>
       <Flex gap="small" justify="flex-start" align="flex-start">
@@ -170,7 +177,19 @@ export default function Office() {
         />
         <RangePicker defaultValue={[dayjs(), dayjs()]} onChange={onChange} />
       </Flex>
-      <Table dataSource={visits} columns={columns} rowKey="id" />
+      <Table
+        dataSource={visits}
+        columns={columns}
+        rowKey="id"
+        pagination={false}
+      />
+      <PaginationTable
+        page={page}
+        total={response?.meta?.total}
+        onChangeFn={setPage}
+        limit={limit}
+        onShowSizeChangeFn={setLimit}
+      />
     </AppLayout>
   );
 }

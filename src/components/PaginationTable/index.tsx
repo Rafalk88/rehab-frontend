@@ -1,27 +1,43 @@
 import type { PaginationProps } from "antd";
 import { Pagination } from "antd";
-import { useCallback } from "react";
+import { Dispatch, SetStateAction, useCallback } from "react";
 
 function PaginationTable({
+  page,
   total = 20,
-  callbackFn,
+  onChangeFn,
+  limit,
+  onShowSizeChangeFn,
 }: {
+  page: number;
   total: number;
-  callbackFn: (pageNumber: number) => void;
+  onChangeFn: Dispatch<SetStateAction<number>>;
+  limit: number;
+  onShowSizeChangeFn: Dispatch<SetStateAction<number>>;
 }) {
   const onChange: PaginationProps["onChange"] = useCallback(
     (pageNumber) => {
-      callbackFn(pageNumber);
+      onChangeFn(pageNumber);
     },
-    [callbackFn]
+    [onChangeFn]
+  );
+
+  const onShowSizeChange: PaginationProps["onShowSizeChange"] = useCallback(
+    (_c, pageSize) => {
+      onShowSizeChangeFn(pageSize);
+    },
+    [onShowSizeChangeFn]
   );
 
   return (
     <Pagination
       showQuickJumper
-      defaultCurrent={1}
+      current={page}
       total={total}
       onChange={onChange}
+      pageSize={limit}
+      onShowSizeChange={onShowSizeChange}
+      pageSizeOptions={[2, 5, 10, 20]}
     />
   );
 }

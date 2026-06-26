@@ -34,12 +34,13 @@ export default function Office() {
   const statusDateFromFilter =
     status === "IN_PROGRESS" ? new Date("2000-01-01") : dateFrom;
 
-  const { data: response } = useVisits(
-    orgUnit,
-    statusDateFromFilter,
+  const { data: response } = useVisits(orgUnit, {
+    dateFrom: statusDateFromFilter,
     dateTo,
-    status
-  );
+    status,
+    page: 1,
+    limit: 20,
+  });
   const visits = response?.data;
 
   const handleChange = useCallback((value: STATUS) => {

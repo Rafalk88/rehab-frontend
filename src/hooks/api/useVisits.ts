@@ -20,19 +20,22 @@ export interface Visit {
   };
 }
 
+interface VisitsProps {
+  dateFrom?: Date;
+  dateTo?: Date;
+  status?: VisitStatus;
+  page?: number;
+  limit?: number;
+}
+
 /**
- * Hook for GET visits by specific organizationalUnit (get from reactQuery cache), date (opt) & status (opt)
+ * Hook for GET visits by specific organizationalUnit (get from reactQuery cache)
  * @param orgUnit
- * @param date
- * @param status
+ * @param options (optional)
  * @returns lists of visits by params.
  */
-export function useVisits(
-  orgUnit: string,
-  dateFrom?: Date,
-  dateTo?: Date,
-  status?: VisitStatus
-) {
+export function useVisits(orgUnit: string, options: VisitsProps = {}) {
+  const { dateFrom, dateTo, status, page = 1, limit = 20 } = options;
   const queryClient = useQueryClient();
 
   const data = queryClient.getQueryData<OrganizationalUnit[]>([
@@ -52,6 +55,8 @@ export function useVisits(
     dateFrom: formattedDateFrom,
     dateTo: formattedDateTo,
     status,
+    page,
+    limit,
   };
 
   const params = new URLSearchParams();
@@ -60,6 +65,8 @@ export function useVisits(
   if (queryParams.dateFrom) params.append("dateFrom", queryParams.dateFrom);
   if (queryParams.dateTo) params.append("dateTo", queryParams.dateTo);
   if (queryParams.status) params.append("status", queryParams.status);
+  if (queryParams.page) params.append("page", queryParams.page.toString());
+  if (queryParams.limit) params.append("limit", queryParams.limit.toString());
 
   return useQuery({
     queryKey: ["visits", queryParams],

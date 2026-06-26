@@ -24,7 +24,9 @@ describe("", () => {
     const { result } = renderHook(() => useVisits("POR19"), { wrapper });
 
     await waitFor(() => {
-      expect((api as any).get).toHaveBeenCalledWith("/visits?orgId=abc-123");
+      expect((api as any).get).toHaveBeenCalledWith(
+        "/visits?orgId=abc-123&page=1&limit=20"
+      );
     });
   });
 });
